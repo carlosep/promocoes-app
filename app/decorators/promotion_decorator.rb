@@ -6,4 +6,9 @@ class PromotionDecorator < Draper::Decorator
     approval.user.name.capitalize
   end
 
+
+  private
+  def approval
+    super || NilApproval.new
+  end
 end

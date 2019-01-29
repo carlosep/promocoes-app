@@ -11,7 +11,7 @@ class CouponsController < ApplicationController
     if (@promotion.coupon_limit - count_coupon) > -1
       amount.times do
         code = Coupon.generate_code(@promotion.prefix)
-        @coupon = Coupon.new(user: current_user,
+        @coupon = Coupon.new(user_id: current_user.id,
                              code: code,
                              promotion: @promotion,
                              status: :available)
