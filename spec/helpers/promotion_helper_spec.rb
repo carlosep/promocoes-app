@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe PromotionHelper do
-  describe 'promotion_status'do
+  describe 'promotion_status' do
     it 'it should render pending status' do
       promotion = build(:promotion, status: :pending)
       status = promotion_status(promotion)

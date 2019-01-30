@@ -61,7 +61,7 @@ RSpec.describe Coupon, type: :request do
 
     it 'fails if coupon has already been used' do
       coupon = create(:coupon, promotion: create(:promotion, name: 'Bla',
-                                                 prefix: 'ABC'))
+                                                             prefix: 'ABC'))
       coupon.update code: Coupon.generate_code(coupon.promotion.prefix)
       coupon.create_usage
       order_number = 1234
@@ -80,7 +80,7 @@ RSpec.describe Coupon, type: :request do
       travel_to Time.zone.local(2010, 0o1, 0o1)
       product = create(:product, name: 'Bla', product_key: 'ABC')
       promotion = create(:promotion, :approved, discount: 10, product: product,
-                        name: 'Bla')
+                                                name: 'Bla')
       promotion.active!
       coupon = create(:coupon, promotion: promotion)
       coupon.update code: Coupon.generate_code(coupon.promotion.prefix)

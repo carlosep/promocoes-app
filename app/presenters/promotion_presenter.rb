@@ -2,13 +2,13 @@ class PromotionPresenter < SimpleDelegator
   include Rails.application.routes.url_helpers
   attr_reader :current_user
   delegate :content_tag, :link_to, to: :helpers
-  
+
   def initialize(promotion, current_user)
     @current_user = current_user
     super(promotion)
   end
 
-  def status()
+  def status
     if pending?
       content_tag(:span, class: 'ls-tag-warning') do
         'Pendente'
@@ -29,15 +29,22 @@ class PromotionPresenter < SimpleDelegator
   end
 
   def approval_link
-    return '' if created_by? current_user
-    return '' unless pending?
+    return '' unless authorizer.can_approve?
+
+    # return '' if created_by? current_user
+    # return '' unless pending?
     content_tag(:div, class: 'ls-actions-bt') do
-      link_to 'Aprovar Promoção', approve_promotion_path(id: self.id), method: :put, class: 'ls-btn-primary ls-btn-lg'
+      link_to 'Aprovar Promoção', approve_promotion_path(id: id), method: :put, class: 'ls-btn-primary ls-btn-lg'
     end
   end
 
   private
+
   def helpers
     ApplicationController.helpers
+  end
+
+  def authorizer
+    @authorizer ||= PromotionAuthorizer.new(self, current_user)
   end
 end

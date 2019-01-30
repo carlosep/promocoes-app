@@ -5,9 +5,9 @@ feature 'User issues coupons' do
     creation_user = create(:user)
     approval_user = create(:user)
     @promotion = create(:promotion, :approved, creation_user: creation_user,
-                       approval_user: approval_user,
-                       coupon_limit: 50,
-                       status: :approved)
+                                               approval_user: approval_user,
+                                               coupon_limit: 50,
+                                               status: :approved)
     login_as creation_user, scope: :user
   end
 

@@ -7,7 +7,7 @@ feature 'User sees promotions by status' do
     promotion_not_expect = create(:promotion, status: 0,
                                               name: 'Promoção pendente')
     another_promotion_not_expect = create(:promotion, name: 'Promoção aprovada',
-                                          creation_user: user,
+                                                      creation_user: user,
                                                       status: 1)
     promotion_expect = create(:promotion, creation_user: user, status: 2,
                                           name: 'Promoção ativa')

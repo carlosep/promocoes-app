@@ -25,7 +25,7 @@ feature 'Coupons become unavailable when promotion expires' do
   scenario 'Coupons is available when promotion is not expired' do
     travel_to 19.days.ago do
       creation_user = create(:user, email: 'creator@promotion.com')
-      approval_user= create(:user, email: 'approval@promotion.com')
+      approval_user = create(:user, email: 'approval@promotion.com')
       @promotion = create(:promotion, :approved, creation_user: creation_user,
                                                  days: 20, status: :approved,
                                                  approval_user: approval_user)

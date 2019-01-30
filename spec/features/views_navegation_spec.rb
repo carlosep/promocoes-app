@@ -38,7 +38,7 @@ feature 'View' do
     user = create(:user, email: 'user@promotion.com')
     login_as user, scope: :user
     promotion = create(:promotion, creation_user: user, name: 'Promoção legal',
-                      description: 'Muito legal')
+                                   description: 'Muito legal')
     visit root_path
 
     click_on 'Home'

@@ -10,6 +10,7 @@ ruby '2.5.3'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'draper'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'puma', '~> 3.0'
@@ -17,7 +18,7 @@ gem 'rails', '~> 5.2.2'
 gem 'sass-rails', '~> 5.0'
 gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
-gem 'draper'
+gem 'delayed_job_active_record'
 
 group :development, :test do
   gem 'capybara'

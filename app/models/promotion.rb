@@ -35,9 +35,7 @@ class Promotion < ApplicationRecord
 
   def promotion_expired?
     if activated?
-      if (activated_at + days.days) < Time.zone.now
-        expired!
-      end
+      expired! if (activated_at + days.days) < Time.zone.now
     end
     expired?
   end
@@ -46,7 +44,7 @@ class Promotion < ApplicationRecord
     update(activated_at: Time.zone.now, status: :activated)
   end
 
-  def created_by? user
+  def created_by?(user)
     creation_user.id == user.id
   end
 end
